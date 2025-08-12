@@ -3,22 +3,55 @@ import { RouterLink, RouterView } from 'vue-router'
 </script> -->
 
 <template>
-  <h2 id="my-app">App</h2>
 
-  <p id="teste">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, voluptatibus. Mollitia iusto aliquid consectetur quae voluptas minima blanditiis perspiciatis error repellat, temporibus sit officiis doloremque odio praesentium, repellendus at omnis.</p>
+  <Header />
 
-  <header>
-    <div class="wrapper">
-      <nav>
-        <router-link to="/">Home</router-link>
-        <router-link to="/about">About</router-link>
-        <router-link to="/products">Products</router-link>
-      </nav>
-    </div>
-  </header>
+  <button v-on:click="add">Add {{ count }}</button>
 
-  <router-view />
+  <h2>App</h2>
+
+  <Footer />
+
+
 </template>
+
+<!-- // Options api -->
+<!-- <script>
+import Header from '@/components/Header.vue';
+import Footer from '@/components/Footer.vue'
+
+export default{
+  components:{Header, Footer},
+  
+  data(){
+    return{
+      count:0
+    }
+  },
+
+  methods:{
+    add(){
+      this.count++
+    }
+  }
+}
+</script> -->
+
+<!-- Composition api -->
+<script setup>
+import { ref } from 'vue';
+
+import Header from '@/components/Header.vue';
+import Footer from '@/components/Footer.vue';
+
+  const count = ref(0);
+
+  function add(){
+    count.value++
+  }
+
+
+</script>
 
 <style scoped>
   /* @import "@/assets/app.css"; */
