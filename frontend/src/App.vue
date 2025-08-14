@@ -1,68 +1,50 @@
-<!-- <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-</script> -->
-
 <template>
 
+<div v-if="showView">
+  
   <Header />
 
-  <button v-on:click="add">Add {{ count }}</button>
+</div>
 
+<button v-on:click="showView = !showView">Apresentar Header</button>
+
+<br>
+
+
+  {{ count }}
+  
+  <button v-on:click="count++">Add 1</button>
+  
   <h2>App</h2>
 
-  <Footer />
+  <router-link to="/">Home</router-link>
+  <router-link to="/about">About</router-link>
 
+  <router-view></router-view>
 
 </template>
 
-<!-- // Options api -->
-<!-- <script>
-import Header from '@/components/Header.vue';
-import Footer from '@/components/Footer.vue'
 
-export default{
-  components:{Header, Footer},
-  
-  data(){
-    return{
-      count:0
-    }
-  },
-
-  methods:{
-    add(){
-      this.count++
-    }
-  }
-}
-</script> -->
-
-<!-- Composition api -->
 <script setup>
-import { ref } from 'vue';
+import { onMounted, onUpdated, ref } from 'vue';
 
-import Header from '@/components/Header.vue';
-import Footer from '@/components/Footer.vue';
+  import Header from '@/components/Header.vue';
+
+  // const routes = {
+  //   '/': Header
+  // }
 
   const count = ref(0);
 
-  function add(){
-    count.value++
-  }
+  const showView = ref(false)
+
+  onMounted(() => {
+    console.log('mounted');
+  })
+
+  onUpdated(() => {
+    console.log('update');
+  })
 
 
 </script>
-
-<style scoped>
-  /* @import "@/assets/app.css"; */
-
-#my-app{
-  background-color: aqua;
-  color: black;
-}
-
-#teste{
-  color: red;
-}
-
-</style>
