@@ -1,5 +1,12 @@
 <template>
 
+  {{ count }}
+  {{ userName }}
+
+  <ul>
+    <li v-for="user in users">{{ user.firstName }} - {{ user.age }}</li>
+  </ul>
+
   <div v-if="showHeader">
     <Header />
   </div>
@@ -16,8 +23,6 @@
 
   <router-view></router-view>
 
-  {{ count }}
-
 </template>
 
 <script>
@@ -31,12 +36,24 @@ export default {
   data(){
     return{
       count:0,
-      showHeader:false
+      showHeader:false,
+      userName:'Eduardo Frota',
+      users:[
+        {
+          firstName:'Eduardo',
+          age:29
+        },
+        {
+          firstName:'Eliane',
+          age:29
+        }
+      ]
+      
     }
   },
 
   mounted(){
-    console.log('mounted');
+    console.log(this.count);
   },
 
   updated(){
