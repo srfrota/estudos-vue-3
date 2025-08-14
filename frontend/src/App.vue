@@ -1,68 +1,47 @@
-<!-- <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-</script> -->
-
 <template>
 
-  <Header />
+  <div v-if="showHeader">
+    <Header />
+  </div>
 
-  <button v-on:click="add">Add {{ count }}</button>
+  <button v-on:click="showHeader = !showHeader">Toggle header</button>
 
   <h2>App</h2>
 
-  <Footer />
+  <button v-on:click="count++">Add 1</button>
 
+  <router-link to="/">Home</router-link>
+
+  <router-link to="about">About</router-link>
+
+  <router-view></router-view>
+
+  {{ count }}
 
 </template>
 
-<!-- // Options api -->
-<!-- <script>
-import Header from '@/components/Header.vue';
-import Footer from '@/components/Footer.vue'
+<script>
 
-export default{
-  components:{Header, Footer},
-  
+  import Header from "@/components/Header.vue";
+
+export default {
+
+  components: {Header},
+
   data(){
     return{
-      count:0
+      count:0,
+      showHeader:false
     }
   },
 
-  methods:{
-    add(){
-      this.count++
-    }
+  mounted(){
+    console.log('mounted');
+  },
+
+  updated(){
+    console.log('update');
   }
 }
-</script> -->
-
-<!-- Composition api -->
-<script setup>
-import { ref } from 'vue';
-
-import Header from '@/components/Header.vue';
-import Footer from '@/components/Footer.vue';
-
-  const count = ref(0);
-
-  function add(){
-    count.value++
-  }
-
 
 </script>
-
-<style scoped>
-  /* @import "@/assets/app.css"; */
-
-#my-app{
-  background-color: aqua;
-  color: black;
-}
-
-#teste{
-  color: red;
-}
-
-</style>
