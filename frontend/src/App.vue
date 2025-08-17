@@ -10,8 +10,15 @@
 
 <br>
 
-
   {{ count }}
+
+  {{ userName }}
+
+  {{ myName }}
+
+  <ul>
+    <li v-for="user in users">{{ user.firstName }} - {{ user.age }}</li>
+  </ul>
   
   <button v-on:click="count++">Add 1</button>
   
@@ -26,7 +33,7 @@
 
 
 <script setup>
-import { onMounted, onUpdated, ref } from 'vue';
+import { onMounted, onUpdated, reactive, ref } from 'vue';
 
   import Header from '@/components/Header.vue';
 
@@ -35,11 +42,25 @@ import { onMounted, onUpdated, ref } from 'vue';
   // }
 
   const count = ref(0);
+  const userName = ref('Eduardo')
+
+  const users = reactive([
+    {
+      firstName:'Eduardo',
+      age:29
+    },
+    {
+      firstName:'Eliane',
+      age:29
+    }
+  ])
+
+  let myName = ref('Eduardo');
 
   const showView = ref(false)
 
   onMounted(() => {
-    console.log('mounted');
+    console.log(users);
   })
 
   onUpdated(() => {
