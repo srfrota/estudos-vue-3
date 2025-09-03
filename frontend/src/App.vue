@@ -1,64 +1,70 @@
 <template>
 
-  {{ count }}
-  {{ userName }}
+  <span v-if="showName">Mostrar o nome</span>
+
+  <div :class="teste">teste</div>
+
+  <img :src="image">
+
 
   <ul>
-    <li v-for="user in users">{{ user.firstName }} - {{ user.age }}</li>
+    <template v-for="(user, key) in users" :key="user.id">
+      <li v-if="user.is_admin == 1">
+          {{ key }} - {{ user.firstName }}
+      </li>
+    </template>
   </ul>
 
-  <div v-if="showHeader">
-    <Header />
-  </div>
 
-  <button v-on:click="showHeader = !showHeader">Toggle header</button>
-
-  <h2>App</h2>
-
-  <button v-on:click="count++">Add 1</button>
-
-  <router-link to="/">Home</router-link>
-
-  <router-link to="about">About</router-link>
-
-  <router-view></router-view>
 
 </template>
 
 <script>
 
-  import Header from "@/components/Header.vue";
-
 export default {
 
-  components: {Header},
+data(){
 
-  data(){
-    return{
-      count:0,
-      showHeader:false,
-      userName:'Eduardo Frota',
-      users:[
-        {
-          firstName:'Eduardo',
-          age:29
-        },
-        {
-          firstName:'Eliane',
-          age:29
-        }
-      ]
-      
-    }
-  },
+  return{
 
-  mounted(){
-    console.log(this.count);
-  },
+    image: 'https://picsum.photos/200/300',
 
-  updated(){
-    console.log('update');
+    teste:'class',
+
+    showName:false,
+
+    user:{name:'Eduardo', age:29},
+
+    users:[
+      {
+        id:1,
+        firstName:'Alexandre',
+        age:40,
+        is_admin:1
+      },
+      {
+        id:2,
+        firstName:'Maria',
+        age:40,
+        is_admin:0
+      },
+      {
+        id:3,
+        firstName:'João',
+        age:40,
+        is_admin:0
+      },
+      {
+        id:3,
+        firstName:'Pedro',
+        age:40,
+        is_admin:1
+      },
+    ]
   }
+
+}
+
 }
 
 </script>
