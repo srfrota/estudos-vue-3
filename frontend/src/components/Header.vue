@@ -4,14 +4,10 @@
 
 <script>
 export default {
-
-  unmounted(){
-    console.log('unmounted header');
-  }
-
-}
+  unmounted() {
+    console.log("unmounted header");
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -5,12 +5,12 @@
 
 <script>
 export default {
-    name: "Products.vue"
-}
+  name: "Products.vue",
+};
 </script>
 
 <style scoped>
-  #app-products{
-    color:red;
-  }
+#app-products {
+  color: red;
+}
 </style>

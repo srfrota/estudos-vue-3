@@ -5,27 +5,23 @@
 </template>
 
 <script>
+export default {
+  data() {
+    return {
+      interval: "",
+    };
+  },
 
-  export default{
+  mounted() {
+    this.interval = setInterval(() => {
+      console.log("mounted");
+    }, 1000);
+  },
 
-    data(){
-      return{
-        interval: ""
-      }
-    },
-
-    mounted() {
-      this.interval = setInterval(()=> {
-        console.log('mounted');
-      },1000)
-    },
-
-    unmounted(){
-      clearInterval(this.interval);
-    }
-
-  }
-
+  unmounted() {
+    clearInterval(this.interval);
+  },
+};
 </script>
 
 <style>
